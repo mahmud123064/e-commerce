@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
 import { ProductServices } from "./product.service";
 
+// create product
 const createProduct = async (req: Request, res: Response) => {
   try {
-    const {product: productData} = req.body;
+    const { product: productData } = req.body;
     console.log(productData);
     // return product;
 
@@ -21,7 +22,16 @@ const createProduct = async (req: Request, res: Response) => {
   }
 };
 
+//get product
+
+const getProduct = async (req: Request, res: Response) => {
+  try {
+    
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 export const ProductController = {
-createProduct
-}
+  createProduct,
+};
