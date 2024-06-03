@@ -11,6 +11,7 @@ router.post('/create-order', OrderController.createOrder);
 //Get route
 router.get('/', OrderController.getAllOrder)
 
-
+// get order by email
+router.get('/orders',OrderController.getOrderByEmail)
 
 export const OrderRoute = router;
