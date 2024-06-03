@@ -43,7 +43,6 @@ const getAllProduct = async (req: Request, res: Response) => {
 };
 
 //get single product
-
 const getSingleProduct = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
@@ -62,8 +61,26 @@ const getSingleProduct = async (req: Request, res: Response) => {
   }
 };
 
+// Delete product
+
+const deleteProduct = async (req: Request, res: Response) => {
+  const { productId } = req.params;
+  const result = await ProductServices.deleteProductFromDB(productId);
+
+  try {
+    res.status(200).json({
+      success: true,
+      message: "Product deleted successfully",
+      data: result,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const ProductController = {
   createProduct,
   getAllProduct,
   getSingleProduct,
+  deleteProduct,
 };

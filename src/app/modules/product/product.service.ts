@@ -22,7 +22,7 @@ const getSingleProductFromDB = async (id: string) => {
 };
 //delete
 const deleteProductFromDB = async (id: string) => {
-  const result = await ProductModel.updateOne({ _id: id });
+  const result = await ProductModel.deleteOne({ _id: id });
   return result;
 };
 
@@ -30,4 +30,5 @@ export const ProductServices = {
   createProductIntoDB,
   getAllProductFromDB,
   getSingleProductFromDB,
+  deleteProductFromDB
 };
