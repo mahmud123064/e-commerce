@@ -34,7 +34,7 @@ const updateProductFromDB = async (id: string, updateData: Partial<Product>) => 
 
 //Search 
 const searchProductsInDB = async (searchTerm: string) => {
-  const regex = new RegExp(searchTerm, 'i'); // 'i' makes it case-insensitive
+  const regex = new RegExp(searchTerm, 'i');
   const result = await ProductModel.find({
     $or: [
       { name: { $regex: regex } },
@@ -42,7 +42,10 @@ const searchProductsInDB = async (searchTerm: string) => {
       { tags: { $in: [regex] } }
     ]
   });
-  return result;
+
+  console.log("Result is: ", result);
+  
+  // return result;
 };
 
 export const ProductServices = {

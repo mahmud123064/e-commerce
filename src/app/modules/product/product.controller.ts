@@ -103,9 +103,9 @@ const updateProduct = async (req: Request, res: Response) => {
 const searchProduct = async (req: Request, res: Response) => {
   const { searchTerm } = req.query;
 
-  const result = await ProductServices.searchProductsInDB(searchTerm as string);
-
+  
   try {
+    const result = await ProductServices.searchProductsInDB(searchTerm as string);
     res.status(200).json({
       success: true,
       message: `Products matching search term '${searchTerm}' fetched successfully!`,
