@@ -1,15 +1,19 @@
 import { Request, Response } from "express";
 import { ProductServices } from "./product.service";
+import { z } from "zod";
+import ProductValidationSchema from "./product.validation";
 
 // create product
 const createProduct = async (req: Request, res: Response) => {
   try {
     const { product: productData } = req.body;
     console.log(productData);
-    // return product;
+
+    // using zod
+    const zodParsedData = ProductValidationSchema.parse(productData);
 
     // It's call from service
-    const result = await ProductServices.createProductIntoDB(productData);
+    const result = await ProductServices.createProductIntoDB(zodParsedData);
 
     // send response to user
     res.status(200).json({
@@ -43,7 +47,7 @@ const getAllProduct = async (req: Request, res: Response) => {
 const getSingleProduct = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
-    console.log(productId);
+    // console.log(productId);
     // return productId;
 
     const result = await ProductServices.getSingleProductFromDB(productId);
@@ -61,5 +65,5 @@ const getSingleProduct = async (req: Request, res: Response) => {
 export const ProductController = {
   createProduct,
   getAllProduct,
-  getSingleProduct
+  getSingleProduct,
 };

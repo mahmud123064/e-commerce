@@ -1,5 +1,6 @@
 import { Schema, model, connect } from "mongoose";
 import { Inventory, Product, Variant } from "./product.interface";
+import validator from 'validator';
 
 const VariantSchema = new Schema<Variant>({
   type: { type: String, required: true },

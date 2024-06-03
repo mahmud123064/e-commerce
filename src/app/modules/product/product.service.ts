@@ -1,3 +1,4 @@
+import { Types } from "mongoose";
 import { Product } from "./product.interface";
 import { ProductModel } from "./product.model";
 
@@ -19,9 +20,14 @@ const getSingleProductFromDB = async (id: string) => {
   const result = await ProductModel.findOne({ _id: id });
   return result;
 };
+//delete
+const deleteProductFromDB = async (id: string) => {
+  const result = await ProductModel.updateOne({ _id: id });
+  return result;
+};
 
 export const ProductServices = {
   createProductIntoDB,
   getAllProductFromDB,
-  getSingleProductFromDB
+  getSingleProductFromDB,
 };
