@@ -106,6 +106,8 @@ const searchProduct = async (req: Request, res: Response) => {
   
   try {
     const result = await ProductServices.searchProductsInDB(searchTerm as string);
+    // console.log(result);
+    
     res.status(200).json({
       success: true,
       message: `Products matching search term '${searchTerm}' fetched successfully!`,

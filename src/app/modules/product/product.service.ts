@@ -43,9 +43,9 @@ const searchProductsInDB = async (searchTerm: string) => {
     ]
   });
 
-  console.log("Result is: ", result);
+  console.log(result);
   
-  // return result;
+  return result;
 };
 
 export const ProductServices = {
