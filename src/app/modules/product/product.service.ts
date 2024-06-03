@@ -26,9 +26,30 @@ const deleteProductFromDB = async (id: string) => {
   return result;
 };
 
+//Update
+const updateProductFromDB = async (id: string, updateData: Partial<Product>) => {
+  const result = await ProductModel.updateOne({ _id: id },updateData);
+  return result;
+};
+
+//Search 
+const searchProductsInDB = async (searchTerm: string) => {
+  const regex = new RegExp(searchTerm, 'i'); // 'i' makes it case-insensitive
+  const result = await ProductModel.find({
+    $or: [
+      { name: { $regex: regex } },
+      { description: { $regex: regex } },
+      { tags: { $in: [regex] } }
+    ]
+  });
+  return result;
+};
+
 export const ProductServices = {
   createProductIntoDB,
   getAllProductFromDB,
   getSingleProductFromDB,
-  deleteProductFromDB
+  deleteProductFromDB,
+  updateProductFromDB,
+  searchProductsInDB
 };
