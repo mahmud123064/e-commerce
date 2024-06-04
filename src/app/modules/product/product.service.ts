@@ -48,6 +48,24 @@ const searchProductsInDB = async (searchTerm: string) => {
   return result;
 };
 
+// Search
+// const searchProductsInDB = async (searchTerm: string) => {
+//   const regex = new RegExp(searchTerm, 'i');
+//   const result = await ProductModel.aggregate([
+//     {
+//       $match: {
+//         $or: [
+//           { name: { $regex: regex } },
+//           { description: { $regex: regex } },
+//           { tags: { $regex: regex } }
+//         ]
+//       }
+//     }
+//   ]);
+
+//   return result;
+// };
+
 export const ProductServices = {
   createProductIntoDB,
   getAllProductFromDB,
