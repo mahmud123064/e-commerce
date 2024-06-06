@@ -111,6 +111,7 @@ const searchProduct = async (req: Request, res: Response) => {
     res.status(200).json({
       success: true,
       message: `Products matching search term '${searchTerm}' fetched successfully!`,
+      data:result
     });
   } catch (err) {
     console.log(err);
